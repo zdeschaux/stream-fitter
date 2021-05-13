@@ -1,4 +1,5 @@
 //! Rusty library for linking and interfacing with chat streams.
+pub mod clients;
 pub mod errors;
 
 /// Lifted error type used throughout this crate.
