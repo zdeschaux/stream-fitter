@@ -16,3 +16,8 @@ serde_derive = "1.0"
 [dependencies.tokio]
 version = "1.5"
 features = ["macros", "rt-multi-thread"]
+
+[dependencies.serenity]
+version = "0.10"
+default-features = false
+features = ["cache", "client", "gateway", "rustls_backend", "model", "utils"]

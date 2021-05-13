@@ -5,7 +5,7 @@ use futures::{future::Future, task::FutureObj};
 use serde_derive::{Deserialize, Serialize};
 use tokio::sync::mpsc::Sender;
 
-use crate::errors::FitterResult;
+use crate::{clients::discord, errors::FitterResult};
 
 /// Message type to use for intercommunication between streams.
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -77,6 +77,8 @@ pub type Client = Box<dyn ClientTrait<FutType = FutureObj<'static, FitterResult<
 #[derive(Deserialize)]
 #[serde(untagged)]
 pub enum ClientConfig {
+    #[serde(rename = "discord")]
+    DiscordConfig(discord::DiscordConfig),
 }
 
 impl ClientConfig {
@@ -88,6 +90,7 @@ impl ClientConfig {
     /// * `config` - A client's config.
     pub fn from_config(id: String, config: ClientConfig) -> FitterResult<Client> {
         match config {
+            ClientConfig::DiscordConfig(cfg) => discord::Discord::from_config(id, cfg),
         }
     }
 }
