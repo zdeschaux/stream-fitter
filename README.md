@@ -1,2 +1,3 @@
-# discorrode
-A relay service between Discord and stream chats.
+# stream-fitter
+
+A relay service between chats.
