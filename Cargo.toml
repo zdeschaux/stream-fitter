@@ -1,0 +1,9 @@
+[workspace]
+members = ["stream-fitter"]
+exclude = ["stream-fitter-cli"]
+
+[profile.release]
+lto = true
+opt-level = 3
+debug = false
+panic = "abort"
