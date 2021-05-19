@@ -1,0 +1,25 @@
+[[bin]]
+name = "stream-fitter"
+path = "src/main.rs"
+
+[package]
+name = "stream-fitter-cli"
+version = "0.1.0"
+authors = ["Zachary Deschaux <zachary.deschaux@gmail.com>"]
+publish = false
+edition = "2018"
+
+[dependencies]
+tracing = "0.1"
+pretty_env_logger = "0.4"
+serde_yaml = "0.8"
+structopt = "0.3"
+
+[dependencies.stream-fitter]
+path = "../stream-fitter"
+
+[profile.release]
+lto = true
+opt-level = 3
+debug = false
+panic = "abort"
